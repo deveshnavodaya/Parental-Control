@@ -1,0 +1,27 @@
+{
+  "name": "Parental Control",
+  "version": "1.0",
+  "description": "Kids u r gone",
+  "permissions": ["tabs","storage", "activeTab", "bookmarks", "alarms","webRequest",
+    "webNavigation",
+    "webRequestBlocking",
+    "management",
+    "http://*/*",
+    "https://*/*"],
+  "background": {
+    "scripts":["firebase-app.js","firebase-auth.js","firebase-database.js","update_db.js","background.js"],
+    "persistent": true
+    
+  },
+  "browser_action": {
+    "default_popup": "popup.html"
+  },
+  "manifest_version": 2,
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+  "content_security_policy": "script-src 'self' https://www.gstatic.com/ https://*.firebaseio.com https://www.googleapis.com; object-src 'self'"
+}
